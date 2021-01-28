@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+flake8 = "*"
+behave = "*"
+confluent-kafka = "*"
+asynctest = "*"
+pytest-asyncio = "*"
+
+[packages]
+loguru = "*"
+faust-streaming = "*"
+
+[requires]
+python_version = "3.7"
