@@ -9,8 +9,12 @@ ThisBuild / useCoursier := false
 // https://github.com/sbt/sbt/issues/5263#issuecomment-626462593
 updateSbtClassifiers / useCoursier := true
 
-// app
+// kafka
 libraryDependencies += "org.apache.kafka" %% "kafka-streams-scala" % "2.6.0"
+libraryDependencies += "org.apache.kafka" % "kafka-streams-test-utils" % "2.6.0" % Test
+// logging
+libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2"
+libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
 // circe JSON serde
 libraryDependencies += "io.circe" %% "circe-core" % "0.13.0"
 libraryDependencies += "io.circe" %% "circe-parser" % "0.13.0"
