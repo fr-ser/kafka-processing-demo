@@ -7,7 +7,7 @@ COPY project /app/project
 
 RUN sbt update
 
-COPY src /app/src
+COPY src/main /app/src/main
 RUN sbt assembly
 
 FROM adoptopenjdk/openjdk11:jre-11.0.9.1_1-alpine

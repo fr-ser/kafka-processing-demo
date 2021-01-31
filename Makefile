@@ -10,7 +10,9 @@ integration-test: bootstrap start-filter integration-test-no-bootstrap
 	docker-compose down --remove-orphans --volumes --timeout=5
 
 integration-test-no-bootstrap:
-	echo "Nothing yet" && exit 1
+	@echo "" && echo ""
+	sbt it:test
+	@echo "" && echo ""
 
 start-filter:
 	docker-compose build filter-build-cache > /dev/null
@@ -30,7 +32,9 @@ start-filter:
 	@echo "filter started and ready"
 
 unit-test:
+	@echo "" && echo ""
 	sbt test
+	@echo "" && echo ""
 
 test: unit-test integration-test
 
