@@ -1,0 +1,8 @@
+# python stuff
+.venv
+.pytest_cache
+__pycache__
+
+# java stuff
+
+target
