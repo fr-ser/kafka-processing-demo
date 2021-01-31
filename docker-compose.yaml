@@ -1,5 +1,4 @@
-version: "3.2"
-# docker compose version for compatibility with CircleCI
+version: "3.4"
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper
@@ -43,6 +42,20 @@ services:
         readings:2:2,
         filtered-readings:2:2,
         filter-condition:1:2:compact,
+    depends_on:
+      - kafka0
+      - kafka1
+  filter-build-cache:
+    build:
+      context: .
+      target: builder
+  filter:
+    build:
+      context: .
+    env_file:
+      - bootstrap.env
+    environment:
+      BOOTSTRAP_SERVERS: "kafka0:29092,kafka1:29093"
     depends_on:
       - kafka0
       - kafka1

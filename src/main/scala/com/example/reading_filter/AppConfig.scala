@@ -5,4 +5,7 @@ case class AppConfig(
   sourceTopic: String,
   filterConditionTopic: String,
   outputTopic: String,
-)
+  commitIntervalMs: Long,
+) {
+  val applicationName = "example.reading-filter"
+}

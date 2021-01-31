@@ -1,6 +1,6 @@
 name := "reading_filter"
 
-version := "0.1"
+version := "0.0.1"
 
 scalaVersion := "2.13.4"
 
@@ -12,6 +12,8 @@ updateSbtClassifiers / useCoursier := true
 // kafka
 libraryDependencies += "org.apache.kafka" %% "kafka-streams-scala" % "2.6.0"
 libraryDependencies += "org.apache.kafka" % "kafka-streams-test-utils" % "2.6.0" % Test
+// config loading
+libraryDependencies += "com.github.pureconfig" %% "pureconfig" % "0.14.0"
 // logging
 libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2"
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
@@ -23,3 +25,11 @@ libraryDependencies += "io.circe" %% "circe-derivation" % "0.13.0-M5"
 libraryDependencies += "io.circe" %% "circe-generic" % "0.13.0" % Test
 // testing
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.3" % Test
+
+// for sbt assembly
+mainClass in assembly := Some("com.example.reading_filter.App")
+assemblyOutputPath in assembly := file("target/reading_filter.jar")
+assemblyMergeStrategy in assembly := {
+  case s if s.endsWith("module-info.class") => MergeStrategy.discard
+  case x => (assemblyMergeStrategy in assembly).value(x)
+}

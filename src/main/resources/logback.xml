@@ -6,7 +6,9 @@
         </encoder>
     </appender>
 
-    <root level="info">
+    <variable name="LOG_LEVEL" value="${LOG_LEVEL:-DEBUG}" />
+
+    <root level="${LOG_LEVEL}">
         <appender-ref ref="console"/>
     </root>
 

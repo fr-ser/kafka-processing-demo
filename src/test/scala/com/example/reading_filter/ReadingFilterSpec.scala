@@ -5,6 +5,8 @@ import org.apache.kafka.common.serialization.Serde
 import org.apache.kafka.streams.{StreamsConfig, TopologyTestDriver}
 import org.scalatest.freespec.AnyFreeSpec
 import org.scalatest.matchers.should.Matchers
+import pureconfig.ConfigSource
+import pureconfig.generic.auto._
 
 import java.util.Properties
 
@@ -19,7 +21,8 @@ class ReadingFilterSpec extends AnyFreeSpec with Matchers {
     props
   }
 
-  private val appConfig = AppConfig("localhost:9092", "input", "filter", "output")
+  private val appConfig =  ConfigSource.default.loadOrThrow[AppConfig]
+
 
   private def readingIdDeserializer()(implicit serde: Serde[ReadingId]) = serde.deserializer()
   private def readingIdSerializer()(implicit serde: Serde[ReadingId]) = serde.serializer()
