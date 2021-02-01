@@ -1,8 +1,8 @@
-package com.example.reading_filter
+package feature
 
 import com.example.reading_filter.models.{JsonSerde, ReadingId, ReadingValue}
+import cucumber.api.scala.{EN, ScalaDsl}
 import io.cucumber.datatable.DataTable
-import io.cucumber.scala.{EN, ScalaDsl}
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.apache.kafka.common.serialization.Serde
 import org.scalatest.matchers.should.Matchers.convertToAnyShouldWrapper
@@ -23,7 +23,7 @@ class StepDefinitions extends ScalaDsl with EN {
   private val consumer = KafkaHelper.getConsumer
   private val producer = KafkaHelper.getProducer
 
-  After({
+  After((_)=>{
     producer.close()
     consumer.close()
   })

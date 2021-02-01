@@ -11,12 +11,12 @@ integration-test: bootstrap start-filter integration-test-no-bootstrap
 
 integration-test-no-bootstrap:
 	@echo "" && echo ""
-	sbt it:test
+	sbt cucumber
 	@echo "" && echo ""
 
 start-filter:
-	docker-compose build filter-build-cache > /dev/null
-	docker-compose up --build --detach filter > /dev/null
+	docker-compose build filter-build-cache
+	docker-compose up --build --detach filter
 
 	@echo "Waiting for the filter"
 

@@ -1,5 +1,6 @@
-package com.example.reading_filter
+package feature
 
+import com.example.reading_filter.AppConfig
 import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord, KafkaConsumer}
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerConfig}
 import org.apache.kafka.common.serialization.{StringDeserializer, StringSerializer}
